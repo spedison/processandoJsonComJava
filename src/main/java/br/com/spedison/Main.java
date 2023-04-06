@@ -17,8 +17,8 @@ public class Main {
     record DadosArquivo(String nomeArquivo, String estado, Double lat, Double lng) {
         public String toCsv() {
             return "%s\t%s\t%f\t%f".formatted(nomeArquivo.replace(".json", "").trim(), estado,
-                    Objects.requireNonNullElse(lat, -99999999),
-                    Objects.requireNonNullElse(lng, -99999999)
+                    Objects.requireNonNullElse(lat, Double.valueOf(-99999999.0)),
+                    Objects.requireNonNullElse(lng, Double.valueOf(-99999999.0))
             );
         }
     }
@@ -48,7 +48,7 @@ public class Main {
                                                 name.split("[.]")[1].trim().equalsIgnoreCase("json")
                                 );
 
-        if (Objects.isNull(arquivosParaProcessar) || arquivosParaProcessar.length == 0){
+        if (Objects.isNull(arquivosParaProcessar) || arquivosParaProcessar.length == 0) {
             System.out.println("Não há arquivos para processar");
             return;
         }
